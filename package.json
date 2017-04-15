@@ -10,6 +10,7 @@
   "author": "Yenly Ma",
   "license": "ISC",
   "dependencies": {
-    "twit": "^2.2.5"
+    "twit": "^2.2.5",
+    "watson-developer-cloud": "^2.28.1"
   }
 }
