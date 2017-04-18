@@ -2,14 +2,16 @@
   "name": "tweet_bot_fun",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yenly Ma",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.3",
     "twit": "^2.2.5",
     "watson-developer-cloud": "^2.28.1"
   }
