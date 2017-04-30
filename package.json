@@ -10,9 +10,11 @@
   "author": "Yenly Ma",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "^4.15.2",
     "socket.io": "^1.7.3",
     "twit": "^2.2.5",
+    "twitter": "^1.7.0",
     "watson-developer-cloud": "^2.28.1"
   }
 }

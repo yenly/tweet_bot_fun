@@ -1,12 +1,21 @@
+var dotenv = require('dotenv').config();
 var Twit = require('twit');
 var config = require('./config');
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/V3');
 var PersonalityInsighsV3 = require('watson-developer-cloud/personality-insights/v3');
-var TA_config = require('./watson_config');
-var PT_config = require('./personality_config');
+// var TA_config = require('./watson_config');
+// var PT_config = require('./personality_config');
 
-var tone_analyzer = new ToneAnalyzerV3(TA_config);
-var personality_insights = new PersonalityInsighsV3(PT_config);
+var tone_analyzer = new ToneAnalyzerV3({
+  username: process.env.REACT_APP_WATSON_TONE_USERNAME,
+  password: process.env.REACT_APP_WATSON_TONE_PASSWORD,
+  version_date: process.env.REACT_APP_WATSON_TONE_VERSION_DATE
+});
+var personality_insights = new PersonalityInsighsV3({
+  username: process.env.REACT_APP_WATSON_PERSONALITY_USERNAME,
+  password: process.env.REACT_APP_WATSON_PERSONALITY_PASSWORD,
+  version_date: process.env.REACT_APP_WATSON_VERSION_DATE
+});
 
 var T = new Twit(config);
 
@@ -50,16 +59,17 @@ function gotUserDatata(err, data, response) {
     if (err)
       console.log(err);
     else
-      console.log(JSON.stringify(tone, null, 2));
+      var toneOverview = tone.document_tone;
+      console.log(JSON.stringify(toneOverview, null, 2));
   }
 
-  personality_insights.profile(inputText, getData);
-
-  function getData(err, response) {
-    if (err)
-      console.log('error', err);
-    else {
-      console.log(JSON.stringify(response, null, 2));
-    }
-  }
+  // personality_insights.profile(inputText, getData);
+  //
+  // function getData(err, response) {
+  //   if (err)
+  //     console.log('error', err);
+  //   else {
+  //     console.log(JSON.stringify(response, null, 2));
+  //   }
+  // }
 }
